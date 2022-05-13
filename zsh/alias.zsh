@@ -1,8 +1,13 @@
+#tmp
+alias mango='ssh -i ~/42/sshkey azureuser@env13-mango.ftt2204.dabaas.net'
+
 # エイリアス
+alias glp='git log --abbrev-commit --pretty=oneline'
+alias frankcrunch='cd ~/Documents/frankcrunch/'
 alias .tmux='nvim ~/dotfiles/.tmux.conf'
 alias .snippet='cd ~/dotfiles/.config/nvim/UltiSnips/'
 alias .nvim='cd ~/dotfiles/.config/nvim'
-alias fm="clang-format -i *.cpp; clang-format -i *.hpp"
+alias fm="clang-format -i *.c; clang-format -i *.h; clang-format -i *.cpp; clang-format -i *.hpp"
 alias sanitize="gcc -g -fsanitize=address"
 alias .command='cd ~/dotfiles/.command'
 alias rmi='rm -i'
@@ -50,6 +55,6 @@ alias gsp='git stash pop'
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 # catをbatに
-if builtin command -v bat > /dev/null; then
-  alias cat="bat"
-fi
+#if builtin command -v bat > /dev/null; then
+#  alias cat="bat"
+#fi

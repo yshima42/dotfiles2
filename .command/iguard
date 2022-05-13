@@ -1,0 +1,21 @@
+#!/bin/sh
+
+for file in `\find . -maxdepth 1 \( -name '*.h' -o -name '*.hpp'   \)`
+do
+    FILE_USCORE=$(echo ${file##*/} | tr . _ | tr '[:lower:]' '[:upper:]')
+    if [ `cat ${file} | grep -c "INCLUDE_GUARD"`  -ge "2" ] ; then
+        echo "${file} already has include guard."
+        continue
+    fi
+    cp ${file} ${file}.bkup
+    UUID=`uuidgen`
+    echo "#ifndef INCLUDE_GUARD_${FILE_USCORE}" >  ${file}
+    echo "#define INCLUDE_GUARD_${FILE_USCORE}" >> ${file}
+    echo "" >> ${file}
+    cat ${file}.bkup >> ${file}
+    echo "" >> ${file}
+    echo "#endif" >> ${file}
+    echo "" >> ${file}
+    rm ${file}.bkup
+done
+
